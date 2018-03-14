@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
-use App\User;
+use App\Services\SocialFacebookAccountService;
 
 class LoginController extends Controller
 {
@@ -34,23 +34,10 @@ class LoginController extends Controller
     }
 
 
-     public function handleProviderCallback()
+     public function handleProviderCallback(SocialFacebookAccountService $service)
     {
-        $user = Socialite::driver('facebook')->user();
-
-        $existingUser =  User::where('email', '=', $user->getEmail())->first();
-
-        if ($existingUser === null) {
-            
-            $newUser = new User;
-            $newUser->name = $user->getName();
-            $newUser->email = $user->getEmail();
-            $newUser->avatar = $user->getAvatar();
-            
-            $newUser->save();
-        }
-
-
-        // $user->token;
+        $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
+        auth()->login($user);
+        return redirect()->to('/home');
     }
 }
