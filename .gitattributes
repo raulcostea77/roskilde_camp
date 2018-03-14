@@ -1,0 +1,4 @@
+composer.lock -diff
+* text=auto
+*.css linguist-vendored
+*.scss linguist-vendored

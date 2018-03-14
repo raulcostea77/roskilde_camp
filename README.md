@@ -1,1 +1,0 @@
-# roskilde_camp

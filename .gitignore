@@ -1,0 +1,23 @@
+# Laravel #
+###########
+/vendor
+/node_modules
+/public/storage
+Homestead.yaml
+Homestead.json
+.env
+# Common web development files #
+################################
+*.sublime-project
+*.sublime-workspace
+*.orig
+*.log
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
