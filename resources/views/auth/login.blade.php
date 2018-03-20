@@ -5,7 +5,7 @@
     <div class="row">
         <div class="medium-8 medium-offset-2 column">
 
-            <a href="{{route('facebook-login')}}" target="_blank">FACEBOOK LOGIN</a>
+            <a href="{{route('facebook-login')}}">FACEBOOK LOGIN</a>
           {{--   <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
 

@@ -32,6 +32,10 @@ class SocialFacebookAccountService
                     'avatar' => $providerUser->getAvatar(),
                     'password' => md5(rand(1,10000)),
                 ]);
+
+                // var_dump($user);
+
+
             }
 
             $account->user()->associate($user);
