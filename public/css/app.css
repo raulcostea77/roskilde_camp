@@ -8542,3 +8542,7 @@ a.thumbnail image {
   }
 }
 
+#map {
+  height: 500px;
+}
+

@@ -76,6 +76,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDekC42wOCFlZhePXgOV2j7Mm4mcfIXNA0">
+    </script>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use GoogleMaps;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,13 @@ class HomeController extends Controller
     {   
 
         $request->user()->authorizeRoles(['masturbator', 'pimp']);
+
+
+        // $response = \GoogleMaps::load('geolocate')->get();
+        // print_r($response);
+        
+        
+
         return view('home');
     }
 }
