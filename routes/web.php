@@ -21,3 +21,6 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallba
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/admin', 'AdminController@index')->name('admin');

@@ -3,6 +3,7 @@
 namespace App\Services;
 use App\SocialFacebookAccount;
 use App\User;
+use App\Role;
 use Laravel\Socialite\Contracts\User as ProviderUser;
 
 class SocialFacebookAccountService
@@ -32,6 +33,8 @@ class SocialFacebookAccountService
                     'avatar' => $providerUser->getAvatar(),
                     'password' => md5(rand(1,10000)),
                 ]);
+
+                $user->roles()->attach(Role::where('name', 'masturbator')->first());
 
                 // var_dump($user);
 
