@@ -34,13 +34,7 @@ class HomeController extends Controller
         JavaScript::put([
             'savedCampLat' => $camp->latitude,
             'savedCampLong' => $camp->longitude,
-         ]);
-       
-
-        // $response = \GoogleMaps::load('geolocate')->get();
-        // print_r($response);
-        
-        
+         ]);    
 
         return view('home')->with('role',$request->user()->roles()->first()->name);
     }

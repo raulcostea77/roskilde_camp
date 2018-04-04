@@ -14,7 +14,7 @@ export default class Map {
     console.log('save:'+savedCampLat);
     console.log('save:'+savedCampLong);
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
+          center: {lat: 55.616770, lng: 12.076731},
           zoom: 21
         });
         infoWindow = new google.maps.InfoWindow;
@@ -39,6 +39,8 @@ export default class Map {
           content: 'Camp LD, Roskilde'
         });
 
+        var myposition = new google.maps.InfoWindow;
+
         // Opens the InfoWindow when marker is clicked.
         marker.addListener('click', function() {
           infoWindow.open(map, marker);
@@ -58,9 +60,9 @@ export default class Map {
 
             console.log(currentPosition);
 
-            // infoWindow.setPosition(pos);
-            // infoWindow.setContent('Latitude:'+pos.lat+'\n'+'Longitude:'+pos.lng);
-            // infoWindow.open(map);
+            myposition.setPosition(pos);
+            myposition.setContent('Here');
+            myposition.open(map);
             map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
