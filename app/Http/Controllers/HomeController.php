@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GoogleMaps;
+use App\Camp;
+use JavaScript;
 
 class HomeController extends Controller
 {
@@ -26,7 +28,14 @@ class HomeController extends Controller
     {   
 
         $request->user()->authorizeRoles(['masturbator', 'pimp']);
+        $camp = Camp::where('name','=','Long Dick')->first();
 
+
+        JavaScript::put([
+            'savedCampLat' => $camp->latitude,
+            'savedCampLong' => $camp->longitude,
+         ]);
+       
 
         // $response = \GoogleMaps::load('geolocate')->get();
         // print_r($response);

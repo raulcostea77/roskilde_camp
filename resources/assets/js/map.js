@@ -11,11 +11,38 @@ export default class Map {
   }
 
   initMap() {
+    console.log('save:'+savedCampLat);
+    console.log('save:'+savedCampLong);
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
           zoom: 21
         });
         infoWindow = new google.maps.InfoWindow;
+
+        var marker = new google.maps.Marker({
+          map: map,
+          // Define the place with a location, and a query string.
+          place: {
+            location: {lat: parseFloat(savedCampLat), lng: parseFloat(savedCampLong)},
+            query: 'Camp LD, Roskilde, Denmark'
+
+          },
+          // Attributions help users find your site again.
+          attribution: {
+            source: 'Google Maps JavaScript API',
+            webUrl: 'https://developers.google.com/maps/'
+          }
+        });
+
+        // Construct a new InfoWindow.
+        var infoWindow = new google.maps.InfoWindow({
+          content: 'Camp LD, Roskilde'
+        });
+
+        // Opens the InfoWindow when marker is clicked.
+        marker.addListener('click', function() {
+          infoWindow.open(map, marker);
+        });
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -31,9 +58,9 @@ export default class Map {
 
             console.log(currentPosition);
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Latitude:'+pos.lat+'\n'+'Longitude:'+pos.lng);
-            infoWindow.open(map);
+            // infoWindow.setPosition(pos);
+            // infoWindow.setContent('Latitude:'+pos.lat+'\n'+'Longitude:'+pos.lng);
+            // infoWindow.open(map);
             map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());

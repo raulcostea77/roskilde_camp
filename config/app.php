@@ -180,6 +180,7 @@ return [
 
         // GoogleMaps provider...
         GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
 
     ],
 
