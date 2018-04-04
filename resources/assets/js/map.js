@@ -1,10 +1,12 @@
 //map
 let map, infoWindow;
 let currentPosition;
+import $ from 'jquery';
 
 
 export default class Map {
   constructor(){
+      this.currentPosition = 0;
       this.initMap();
   }
 
@@ -22,8 +24,12 @@ export default class Map {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-
             currentPosition = pos;
+
+            $("#campLat").val(pos.lat);
+            $("#campLong").val(pos.lng);
+
+            console.log(currentPosition);
 
             infoWindow.setPosition(pos);
             infoWindow.setContent('Latitude:'+pos.lat+'\n'+'Longitude:'+pos.lng);

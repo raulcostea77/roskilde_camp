@@ -33,6 +33,6 @@ class HomeController extends Controller
         
         
 
-        return view('home');
+        return view('home')->with('role',$request->user()->roles()->first()->name);
     }
 }

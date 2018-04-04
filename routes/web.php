@@ -20,7 +20,8 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallba
 
 Auth::routes();
 
+Route::post('/saveCamp', 'CampController@saveCamp')->name('save-camp-location');
+
+
 Route::get('/home', 'HomeController@index')->name('home');
-
-
 Route::get('/admin', 'AdminController@index')->name('admin');
