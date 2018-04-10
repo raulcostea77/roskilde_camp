@@ -14,7 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+   {{--  <div id="app"> --}}
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -73,12 +73,13 @@
         </nav>
 
         @yield('content')
-    </div>
+    {{-- </div> --}}
 
     <!-- Scripts -->
     <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDekC42wOCFlZhePXgOV2j7Mm4mcfIXNA0">
     </script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

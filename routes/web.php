@@ -25,3 +25,11 @@ Route::post('/saveCamp', 'CampController@saveCamp')->name('save-camp-location');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('admin');
+
+
+// Chat stuff
+
+ Route::resource('groups', 'GroupController');
+
+Route::resource('conversations', 'ConversationController');
+// end chat stuff

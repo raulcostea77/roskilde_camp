@@ -1,11 +1,13 @@
 // Settings
 @import "settings";
 
+@import "variables";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 // Foundation
-@import "node_modules/foundation-sites/scss/foundation";
+// @import "node_modules/foundation-sites/scss/foundation";
 
 // Include Everything (True) for the Flex Grid :);
-@include foundation-everything(true);
+// @include foundation-everything(true);
 
 #map {
         height: 500px;

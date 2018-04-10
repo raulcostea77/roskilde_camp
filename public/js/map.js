@@ -60,125 +60,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 35);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 1:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-//map
-var map = void 0,
-    infoWindow = void 0;
-var currentPosition = void 0;
-
-
-var Map = function () {
-  function Map() {
-    _classCallCheck(this, Map);
-
-    this.currentPosition = 0;
-    this.initMap();
-  }
-
-  _createClass(Map, [{
-    key: 'initMap',
-    value: function initMap() {
-      console.log('save:' + savedCampLat);
-      console.log('save:' + savedCampLong);
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 55.616770, lng: 12.076731 },
-        zoom: 21
-      });
-      infoWindow = new google.maps.InfoWindow();
-
-      var marker = new google.maps.Marker({
-        map: map,
-        // Define the place with a location, and a query string.
-        place: {
-          location: { lat: parseFloat(savedCampLat), lng: parseFloat(savedCampLong) },
-          query: 'Camp LD, Roskilde, Denmark'
-
-        },
-        // Attributions help users find your site again.
-        attribution: {
-          source: 'Google Maps JavaScript API',
-          webUrl: 'https://developers.google.com/maps/'
-        }
-      });
-
-      // Construct a new InfoWindow.
-      var infoWindow = new google.maps.InfoWindow({
-        content: 'Camp LD, Roskilde'
-      });
-
-      var myposition = new google.maps.InfoWindow();
-
-      // Opens the InfoWindow when marker is clicked.
-      marker.addListener('click', function () {
-        infoWindow.open(map, marker);
-      });
-
-      // Try HTML5 geolocation.
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          currentPosition = pos;
-
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#campLat").val(pos.lat);
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#campLong").val(pos.lng);
-
-          console.log(currentPosition);
-
-          myposition.setPosition(pos);
-          myposition.setContent('Here');
-          myposition.open(map);
-          map.setCenter(pos);
-        }, function () {
-          handleLocationError(true, infoWindow, map.getCenter());
-        });
-      } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
-      }
-    }
-  }, {
-    key: 'handleLocationError',
-    value: function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      infoWindow.setPosition(pos);
-      infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
-      infoWindow.open(map);
-    }
-  }]);
-
-  return Map;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (Map);
-
-/***/ }),
-
-/***/ 35:
+/***/ 18:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(1);
+module.exports = __webpack_require__(4);
 
 
 /***/ }),
 
-/***/ 43:
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10547,6 +10442,111 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
+
+/***/ }),
+
+/***/ 4:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+//map
+var map = void 0,
+    infoWindow = void 0;
+var currentPosition = void 0;
+
+
+var Map = function () {
+  function Map() {
+    _classCallCheck(this, Map);
+
+    this.currentPosition = 0;
+    this.initMap();
+  }
+
+  _createClass(Map, [{
+    key: 'initMap',
+    value: function initMap() {
+      console.log('save:' + savedCampLat);
+      console.log('save:' + savedCampLong);
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 55.616770, lng: 12.076731 },
+        zoom: 21
+      });
+      infoWindow = new google.maps.InfoWindow();
+
+      var marker = new google.maps.Marker({
+        map: map,
+        // Define the place with a location, and a query string.
+        place: {
+          location: { lat: parseFloat(savedCampLat), lng: parseFloat(savedCampLong) },
+          query: 'Camp LD, Roskilde, Denmark'
+
+        },
+        // Attributions help users find your site again.
+        attribution: {
+          source: 'Google Maps JavaScript API',
+          webUrl: 'https://developers.google.com/maps/'
+        }
+      });
+
+      // Construct a new InfoWindow.
+      var infoWindow = new google.maps.InfoWindow({
+        content: 'Camp LD, Roskilde'
+      });
+
+      var myposition = new google.maps.InfoWindow();
+
+      // Opens the InfoWindow when marker is clicked.
+      marker.addListener('click', function () {
+        infoWindow.open(map, marker);
+      });
+
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          currentPosition = pos;
+
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#campLat").val(pos.lat);
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#campLong").val(pos.lng);
+
+          console.log(currentPosition);
+
+          myposition.setPosition(pos);
+          myposition.setContent('Here');
+          myposition.open(map);
+          map.setCenter(pos);
+        }, function () {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+      }
+    }
+  }, {
+    key: 'handleLocationError',
+    value: function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
+  }]);
+
+  return Map;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Map);
 
 /***/ })
 

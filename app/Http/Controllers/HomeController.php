@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use GoogleMaps;
 use App\Camp;
 use JavaScript;
+use App\Group;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -30,12 +32,26 @@ class HomeController extends Controller
         $request->user()->authorizeRoles(['masturbator', 'pimp']);
         $camp = Camp::where('name','=','Long Dick')->first();
 
+        $groups = auth()->user()->groups;
+        $users = User::where('id', '<>', auth()->user()->id)->get();
+        $user = auth()->user();
+
 
         JavaScript::put([
             'savedCampLat' => $camp->latitude,
             'savedCampLong' => $camp->longitude,
-         ]);    
+         ]);
 
-        return view('home')->with('role',$request->user()->roles()->first()->name);
+         // var_dump('users:'. $users);    
+         // var_dump('user:'.$user);    
+         // // var_dump('groups:'.$groups);
+         // exit;    
+
+        return view('home' ,[   
+                                'groups' => $groups, 
+                                'users' => $users, 
+                                'user' => $user, 
+                                'role' => $request->user()->roles()->first()->name  
+                            ]);
     }
 }
