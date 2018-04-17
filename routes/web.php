@@ -29,7 +29,9 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 
 // Chat stuff
 
- Route::resource('groups', 'GroupController');
+Route::resource('groups', 'GroupController');
 
+Route::get('conversations/{groupID}','ConversationController@getGroupConversations');
 Route::resource('conversations', 'ConversationController');
+
 // end chat stuff

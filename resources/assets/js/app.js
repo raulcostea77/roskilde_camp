@@ -4,7 +4,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
+import Map from './map';
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -13,6 +13,11 @@ window.Bus = new Vue();
 Vue.component('groups', require('./components/Groups.vue'));
 Vue.component('create-group', require('./components/CreateGroup.vue'));
 Vue.component('group-chat', require('./components/GroupChat.vue'));
+
+
+
+let map = new Map();
+
 
 const app = new Vue({
     el: '#app'

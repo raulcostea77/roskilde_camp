@@ -22,4 +22,10 @@ class ConversationController extends Controller
 
         return $conversation->load('user');
     }
+
+    public function getGroupConversations($groupID){
+        $conversations = Conversation::where('group_id', '=', $groupID)->get();
+
+        return $conversations;
+    }
 }

@@ -1,10 +1,10 @@
-import Map from './map';
-import Vue from 'vue';
+// import Map from './map';
+// import Vue from 'vue';
 
-// import axios from 'axios';
+// // import axios from 'axios';
 
 
 
-let map = new Map();
+// let map = new Map();
 
-// console.log(map.currentPosition);
+// // console.log(map.currentPosition);

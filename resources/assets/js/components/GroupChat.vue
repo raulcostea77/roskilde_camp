@@ -13,9 +13,9 @@
                 <div class="panel-body chat-panel">
                     <ul class="chat">
                         <li v-for="conversation in conversations">
-                        <!-- <span class="chat-img pull-left">
+                        <span class="chat-img pull-left">
                             <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                        </span> -->
+                        </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
                                     <strong class="primary-font">{{ conversation.user.name }}</strong>
@@ -55,6 +55,7 @@
 
         mounted() {
             this.listenForNewMessage();
+            this.getConversations();
         },
 
         methods: {
@@ -72,6 +73,13 @@
                         // console.log(e);
                         this.conversations.push(e);
                     });
+            },
+
+            getConversations() {
+                axios.get('/conversations/'+this.group.id)
+                    .then((response) => {
+                        console.log(response);
+                });
             }
         }
     }
