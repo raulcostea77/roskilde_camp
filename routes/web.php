@@ -32,6 +32,9 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::resource('groups', 'GroupController');
 
 Route::get('conversations/{groupID}','ConversationController@getGroupConversations');
+Route::get('users/{groupID}','UserController@getUsersFromGroup');
 Route::resource('conversations', 'ConversationController');
+
+
 
 // end chat stuff

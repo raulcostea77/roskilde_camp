@@ -12,18 +12,38 @@
             <div class="panel" :id="'collapseOne-' + group.id">
                 <div class="panel-body chat-panel">
                     <ul class="chat">
-                        <li v-for="conversation in conversations">
-                        <span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">{{ conversation.user.name }}</strong>
+                        <li v-for="oldconvo in oldconvos">
+                            <span class="chat-img pull-left">
+                                <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+                            </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">{{ oldconvo.username }}</strong>
+                                    </div>
+                                    <p>
+                                        {{ oldconvo.message }}
+                                    </p>
+                                    <p>
+                                        {{ oldconvo.created_at }}
+                                    </p>
                                 </div>
-                                <p>
-                                    {{ conversation.message }}
-                                </p>
-                            </div>
+                        </li>
+
+                        <li v-for="conversation in conversations">
+                            <span class="chat-img pull-left">
+                                <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+                            </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">{{ conversation.user.name }}</strong>
+                                    </div>
+                                    <p>
+                                        {{ conversation.message }}
+                                    </p>
+                                    <p>
+                                        {{ conversation.created_at }}
+                                    </p>
+                                </div>
                         </li>
                     </ul>
                 </div>
@@ -47,15 +67,18 @@
 
         data() {
             return {
+                oldconvos: [],
+                users:[],
                 conversations: [],
                 message: '',
-                group_id: this.group.id
+                group_id: this.group.id,
             }
         },
 
         mounted() {
-            this.listenForNewMessage();
+            this.getUsers();
             this.getConversations();
+            this.listenForNewMessage();
         },
 
         methods: {
@@ -64,6 +87,7 @@
                 .then((response) => {
                     this.message = '';
                     this.conversations.push(response.data);
+                            // console.log(this.conversations);
                 });
             },
 
@@ -75,11 +99,30 @@
                     });
             },
 
+            getUsers() {
+                axios.get('/users/'+this.group.id)
+                    .then((response) => {
+                           this.users = response.data;
+                           // console.log(this.users);        
+                });
+            },
+
             getConversations() {
                 axios.get('/conversations/'+this.group.id)
                     .then((response) => {
-                        console.log(response);
+                           this.oldconvos = response.data;        
+                             this.oldconvos.forEach( oldconvo => {
+                                this.users.forEach( user => {
+                                    if(user.id == oldconvo.user_id )
+                                        oldconvo.username = user.name;
+                                });
+
+                                
+                            })
+                    
                 });
+
+               
             }
         }
     }

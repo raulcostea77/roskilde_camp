@@ -46284,20 +46284,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['group'],
 
     data: function data() {
         return {
+            oldconvos: [],
+            users: [],
             conversations: [],
             message: '',
             group_id: this.group.id
         };
     },
     mounted: function mounted() {
-        this.listenForNewMessage();
+        this.getUsers();
         this.getConversations();
+        this.listenForNewMessage();
     },
 
 
@@ -46308,6 +46331,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/conversations', { message: this.message, group_id: this.group.id }).then(function (response) {
                 _this.message = '';
                 _this.conversations.push(response.data);
+                // console.log(this.conversations);
             });
         },
         listenForNewMessage: function listenForNewMessage() {
@@ -46318,9 +46342,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.conversations.push(e);
             });
         },
+        getUsers: function getUsers() {
+            var _this3 = this;
+
+            axios.get('/users/' + this.group.id).then(function (response) {
+                _this3.users = response.data;
+                // console.log(this.users);        
+            });
+        },
         getConversations: function getConversations() {
+            var _this4 = this;
+
             axios.get('/conversations/' + this.group.id).then(function (response) {
-                console.log(response);
+                _this4.oldconvos = response.data;
+                _this4.oldconvos.forEach(function (oldconvo) {
+                    _this4.users.forEach(function (user) {
+                        if (user.id == oldconvo.user_id) oldconvo.username = user.name;
+                    });
+                });
             });
         }
     }
@@ -46364,27 +46403,68 @@ var render = function() {
             _c(
               "ul",
               { staticClass: "chat" },
-              _vm._l(_vm.conversations, function(conversation) {
-                return _c("li", [
-                  _vm._m(0, true),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "chat-body clearfix" }, [
-                    _c("div", { staticClass: "header" }, [
-                      _c("strong", { staticClass: "primary-font" }, [
-                        _vm._v(_vm._s(conversation.user.name))
-                      ])
-                    ]),
+              [
+                _vm._l(_vm.oldconvos, function(oldconvo) {
+                  return _c("li", [
+                    _vm._m(0, true),
                     _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        "\n                                " +
-                          _vm._s(conversation.message) +
-                          "\n                            "
-                      )
+                    _c("div", { staticClass: "chat-body clearfix" }, [
+                      _c("div", { staticClass: "header" }, [
+                        _c("strong", { staticClass: "primary-font" }, [
+                          _vm._v(_vm._s(oldconvo.username))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(oldconvo.message) +
+                            "\n                                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(oldconvo.created_at) +
+                            "\n                                "
+                        )
+                      ])
                     ])
                   ])
-                ])
-              })
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.conversations, function(conversation) {
+                  return _c("li", [
+                    _vm._m(1, true),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "chat-body clearfix" }, [
+                      _c("div", { staticClass: "header" }, [
+                        _c("strong", { staticClass: "primary-font" }, [
+                          _vm._v(_vm._s(conversation.user.name))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(conversation.message) +
+                            "\n                                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(conversation.created_at) +
+                            "\n                                "
+                        )
+                      ])
+                    ])
+                  ])
+                })
+              ],
+              2
             )
           ]),
           _vm._v(" "),
@@ -46450,6 +46530,20 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "chat-img pull-left" }, [
+      _c("img", {
+        staticClass: "img-circle",
+        attrs: {
+          src: "http://placehold.it/50/55C1E7/fff&text=U",
+          alt: "User Avatar"
+        }
+      })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

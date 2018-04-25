@@ -20,12 +20,16 @@ class ConversationController extends Controller
 
          broadcast(new NewMessage($conversation))->toOthers();
 
+         var_dump($conversation->load('user'));
+         exit;
+
         return $conversation->load('user');
     }
 
     public function getGroupConversations($groupID){
         $conversations = Conversation::where('group_id', '=', $groupID)->get();
 
+      
         return $conversations;
     }
 }
