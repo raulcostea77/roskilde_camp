@@ -38,3 +38,8 @@ Route::resource('conversations', 'ConversationController');
 
 
 // end chat stuff
+
+//b2b stuff
+
+Route::get('b2b','QuestionsController@index');
+Route::post('b2b/add','QuestionsController@store');

@@ -1,10 +1,4 @@
-// import Map from './map';
-// import Vue from 'vue';
+import B2B from './b2b';
 
-// // import axios from 'axios';
+let b2b = new B2B();
 
-
-
-// let map = new Map();
-
-// // console.log(map.currentPosition);

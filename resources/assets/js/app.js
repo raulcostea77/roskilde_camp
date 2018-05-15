@@ -1,10 +1,7 @@
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 import Map from './map';
+import B2B from './b2b';
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -16,14 +13,23 @@ Vue.component('group-chat', require('./components/GroupChat.vue'));
 
 
 
-let map = new Map();
+let mapPage = document.getElementById('map');
+if (mapPage) {
+    const map = new Map();
+}
+
+let b2bPage = document.getElementById('b2b');
+if (b2bPage) {
+    const b2b = new B2B();
+}
 
 
-const app = new Vue({
-    el: '#app'
-});
 
-console.log(app);
+// const app = new Vue({
+//     el: '#app'
+// });
+
+// console.log(app);
 
 
 

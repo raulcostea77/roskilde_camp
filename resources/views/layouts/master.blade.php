@@ -27,7 +27,6 @@
          @yield('before-scripts')
          
          <script src="{{asset('js/app.js')}}"></script>
-         {{-- <script> $(document).foundation();</script> --}}
 
          @yield('after-scripts')
          
