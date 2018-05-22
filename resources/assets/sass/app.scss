@@ -1,8 +1,8 @@
 // Settings
 @import "settings";
 
-@import "variables";
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "variables";
+@import "node_modules/bootstrap/scss/bootstrap";
 // Foundation
 // @import "node_modules/foundation-sites/scss/foundation";
 
@@ -11,4 +11,15 @@
 
 #map {
         height: 500px;
+}
+
+// Random selector
+#random_content{
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+
+    #randomName{
+        font-size: 30vw;
+    }
 }

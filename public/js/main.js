@@ -60,114 +60,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 237);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 237:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(238);
-module.exports = __webpack_require__(239);
-
-
-/***/ }),
-
-/***/ 238:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__b2b__ = __webpack_require__(243);
-
-
-var b2b = new __WEBPACK_IMPORTED_MODULE_0__b2b__["a" /* default */]();
-
-/***/ }),
-
-/***/ 239:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 243:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-var COUNTDOWN = 5;
-
-var B2B = function () {
-    function B2B() {
-        var _this = this;
-
-        _classCallCheck(this, B2B);
-
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#start').on('click', function (e) {
-            _this.startGame();
-        });
-    }
-
-    _createClass(B2B, [{
-        key: 'removeQuestion',
-        value: function removeQuestion(questionToRemove) {
-            for (var i = questions.length - 1; i >= 0; i--) {
-                if (questions[i] === questionToRemove) {
-                    questions.splice(i, 1);
-                }
-            }
-        }
-    }, {
-        key: 'getRandomQuestion',
-        value: function getRandomQuestion() {
-            return questions[Math.floor(Math.random() * questions.length)];
-        }
-    }, {
-        key: 'startGame',
-        value: function startGame() {
-
-            __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#start').text('Next Question');
-
-            var randomItem = this.getRandomQuestion();
-            this.removeQuestion(randomItem);
-
-            var countDown = COUNTDOWN;
-            __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#timer').text(countDown);
-            __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#questionHeader').text(randomItem);
-
-            setTimeout(function (e) {
-                var hack = setInterval(function (f) {
-                    if (countDown) {
-                        countDown--;
-                        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#timer').text(countDown);
-                    }
-                }, 1000);
-
-                __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#start').on('click', function (e) {
-                    clearInterval(hack);
-                });
-            }, 3000);
-        }
-    }]);
-
-    return B2B;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (B2B);
-
-/***/ }),
-
-/***/ 64:
+/******/ ([
+/* 0 */,
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10537,6 +10435,113 @@ return jQuery;
 } );
 
 
-/***/ })
+/***/ }),
+/* 2 */,
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/******/ });
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var COUNTDOWN = 5;
+
+var B2B = function () {
+    function B2B() {
+        var _this = this;
+
+        _classCallCheck(this, B2B);
+
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#start').on('click', function (e) {
+            _this.startGame();
+        });
+    }
+
+    _createClass(B2B, [{
+        key: 'removeQuestion',
+        value: function removeQuestion(questionToRemove) {
+            for (var i = questions.length - 1; i >= 0; i--) {
+                if (questions[i] === questionToRemove) {
+                    questions.splice(i, 1);
+                }
+            }
+        }
+    }, {
+        key: 'getRandomQuestion',
+        value: function getRandomQuestion() {
+            return questions[Math.floor(Math.random() * questions.length)];
+        }
+    }, {
+        key: 'startGame',
+        value: function startGame() {
+
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#start').text('Next Question');
+
+            var randomItem = this.getRandomQuestion();
+            this.removeQuestion(randomItem);
+
+            var countDown = COUNTDOWN;
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#timer').text(countDown);
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#questionHeader').text(randomItem);
+
+            setTimeout(function (e) {
+                var hack = setInterval(function (f) {
+                    if (countDown) {
+                        countDown--;
+                        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#timer').text(countDown);
+                    }
+                }, 1000);
+
+                __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#start').on('click', function (e) {
+                    clearInterval(hack);
+                });
+            }, 3000);
+        }
+    }]);
+
+    return B2B;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (B2B);
+
+/***/ }),
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(14);
+module.exports = __webpack_require__(15);
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__b2b__ = __webpack_require__(3);
+
+
+var b2b = new __WEBPACK_IMPORTED_MODULE_0__b2b__["a" /* default */]();
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ })
+/******/ ]);
