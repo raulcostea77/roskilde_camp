@@ -43,3 +43,11 @@ Route::resource('conversations', 'ConversationController');
 
 Route::get('b2b','QuestionsController@index');
 Route::post('b2b/add','QuestionsController@store');
+
+
+//random names stuff
+
+Route::get('random','RandomNamesController@index');
+Route::get('random/start','RandomNamesController@startNewGame');
+Route::get('random/next','RandomNamesController@nextLoser');
+
